@@ -15,6 +15,8 @@ public class EnemyController : MonoBehaviour
 
     public Warship warship;
 
+    public ParticleSystem explosion;
+
     private void Start()
     {
         warship = GameObject.FindGameObjectWithTag("WarShip").GetComponent<Warship>();
@@ -45,7 +47,9 @@ public class EnemyController : MonoBehaviour
             if(hitPoint <= 0)
             {
                 Destroy(gameObject);
+                ParticleSystem ps = Instantiate(explosion,transform.position,Quaternion.identity);
                 warship.UpdateScore();
+                Destroy(ps , 1);
             }
 
         }

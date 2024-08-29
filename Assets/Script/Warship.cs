@@ -44,6 +44,7 @@ public class Warship : MonoBehaviour
         float xPos = Random.Range(-10.0f, 10.0f);
         Vector3 shipPos = new Vector3(xPos, transform.position.y, transform.position.z);
         GameObject go = Instantiate(enemyShip, shipPos ,Quaternion.identity);
+        Destroy(go,25);
     }
 
     public void UpdateScore()

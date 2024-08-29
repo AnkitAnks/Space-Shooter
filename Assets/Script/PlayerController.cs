@@ -11,6 +11,9 @@ public class PlayerController : MonoBehaviour
 
     private Health health;
 
+    // Contains referennce of explosion particle prefab
+    public ParticleSystem explosion;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +28,7 @@ public class PlayerController : MonoBehaviour
         transform.Translate(xInput*speed*Time.deltaTime,yInput*speed*Time.deltaTime,0);
     }
 
+    // Check and update the player health when a bullet hits.
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "EnemyBullet")
@@ -34,6 +38,7 @@ public class PlayerController : MonoBehaviour
             if (health.curHealth <= 0)
             {
                 Destroy(gameObject);
+                Instantiate(explosion, transform.position, Quaternion.identity);
                 SceneManager.LoadScene("SampleScene");
             }
 
@@ -43,6 +48,7 @@ public class PlayerController : MonoBehaviour
         {
             Destroy(collision.gameObject);
             Destroy(gameObject);
+            Instantiate(explosion, transform.position, Quaternion.identity);
             SceneManager.LoadScene("SampleScene");
             
         }
