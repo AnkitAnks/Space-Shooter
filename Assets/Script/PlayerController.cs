@@ -39,7 +39,7 @@ public class PlayerController : MonoBehaviour
             {
                 Destroy(gameObject);
                 Instantiate(explosion, transform.position, Quaternion.identity);
-                SceneManager.LoadScene("SampleScene");
+                SceneManager.LoadScene("Loader");
             }
 
         }
@@ -49,7 +49,7 @@ public class PlayerController : MonoBehaviour
             Destroy(collision.gameObject);
             Destroy(gameObject);
             Instantiate(explosion, transform.position, Quaternion.identity);
-            SceneManager.LoadScene("SampleScene");
+            SceneManager.LoadScene("Loader");
             
         }
     }
